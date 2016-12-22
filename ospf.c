@@ -91,7 +91,7 @@ while (nleft>1) {
 	return(answer);
 }
 
-voidmain(intargc,char*argv[])
+void main(int argc, char*argv[])
 {
 
 BYTEospf[24]={	0x02,\
@@ -102,8 +102,6 @@ BYTEospf[24]={	0x02,\
 		0xa8,\
 		0x67,\
 		0x01,\
-
-
 		0x00,\
 		0x00,\
 		0x00,\
@@ -140,7 +138,7 @@ BYTEl2[14]={	0x01,\
 };
 
 
-structpacketp;
+struct packet p;
 memset(&p,0x0,sizeof(struct packet));
 p.ip.version =4;
 p.ip.ihl =IPHSIZE>>2;
