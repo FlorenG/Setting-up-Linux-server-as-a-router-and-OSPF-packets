@@ -71,7 +71,7 @@ int create_socket(char*device)
 
 
 
-unsigned shortin_cksum(unsigned short*addr, intlen)
+unsigned short in_cksum(unsigned short *addr, int len)
 {
 register int sum=0;
 u_short answer=0;
@@ -141,7 +141,7 @@ BYTEl2[14]={	0x01,\
 
 
 structpacketp;
-memset(&p,0x0,sizeof(structpacket));
+memset(&p,0x0,sizeof(struct packet));
 p.ip.version =4;
 p.ip.ihl =IPHSIZE>>2;
 p.ip.tos =0;
@@ -160,18 +160,19 @@ p.ip.ttl =htons(254);
 p.ip.protocol =0x59;
 p.ip.saddr =inet_addr(argv[2]);
 p.ip.daddr =inet_addr("0xE0000005");
-p.ip.check =(unsigned short)in_cksum((unsigned short*)&p.ip,IPHSIZE);
+p.ip.check =(unsigned short) in_cksum((unsigned short*)&p.ip, IPHSIZE);
 BYTE buf[MAX];
 memcpy(buf,l2,ETHSIZE);
 memcpy(buf+ETHSIZE,&p.ip,IPHSIZE);
 memcpy(buf+ETHSIZE+IPHSIZE,ospf,24);
 int sock_fd=create_socket(argv[1]);
 if((!packet_socket))
-	{printf("no created socket!\n");
-	return;
+	{
+	 printf("no created socket!\n");
+	 return;
 	}
-write(packet_socket,(BYTE*)buf,ETHSIZE+ntohs(p.ip.tot_len));
-printf("­­­­­packetsent­­­­­­\n");
+write(packet_socket, (BYTE *)buf, ETHSIZE+ntohs(p.ip.tot_len));
+printf("----packet sent-----\n");
 }
 
 
