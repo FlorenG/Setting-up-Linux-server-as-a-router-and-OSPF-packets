@@ -94,7 +94,7 @@ while (nleft>1) {
 void main(int argc, char*argv[])
 {
 
-BYTEospf[24]={	0x02,\
+BYTE ospf[24]={	0x02,\
 		0x01,\
 		0x00,\
 		0x2c,\
@@ -121,7 +121,7 @@ BYTEospf[24]={	0x02,\
 };
 
 
-BYTEl2[14]={	0x01,\
+BYTE l2[14]={	0x01,\
 		0x00,\
 		0x5e,\
 		0x00,\
