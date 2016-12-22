@@ -36,7 +36,7 @@ int create_socket(char*device)
 	memset(&ifr, 0, sizeof(ifr));
 	struct sockaddr_ll rawsll;
 	memset(&rawsll, 0, sizeof(rawsll));
-	packet_socket=socket(PF_PACKET,SOCK_RAW,htons(ETH_P_ALL));
+	packet_socket=socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
 	if(packet_socket==0)
 	{
 		printf("ERR:socket creation for device:%s\n",device);
@@ -54,7 +54,7 @@ int create_socket(char*device)
 		rawsll.sll_ifindex =ifr.ifr_ifindex;
 		rawsll.sll_protocol =htons(ETH_P_ALL);
 
-		if(bind(packet_socket,(structsockaddr*)&rawsll,sizeof(sll))==­1)
+		if(bind(packet_socket, (struct sockaddr *) &rawsll, sizeof(sll))==­1)
 		{
 		printf("ERR:bind failed for device:%s\n",device);
 		return FALSE;
@@ -162,10 +162,10 @@ p.ip.saddr =inet_addr(argv[2]);
 p.ip.daddr =inet_addr("0xE0000005");
 p.ip.check =(unsigned short) in_cksum((unsigned short*)&p.ip, IPHSIZE);
 BYTE buf[MAX];
-memcpy(buf,l2,ETHSIZE);
-memcpy(buf+ETHSIZE,&p.ip,IPHSIZE);
-memcpy(buf+ETHSIZE+IPHSIZE,ospf,24);
-int sock_fd=create_socket(argv[1]);
+memcpy(buf, l2, ETHSIZE);
+memcpy(buf + ETHSIZE, &p.ip, IPHSIZE);
+memcpy(buf + ETHSIZE + IPHSIZE, ospf, 24);
+int sock_fd = create_socket(argv[1]);
 if((!packet_socket))
 	{
 	 printf("no created socket!\n");
