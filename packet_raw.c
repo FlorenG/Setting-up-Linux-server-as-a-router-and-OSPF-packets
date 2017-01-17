@@ -19,11 +19,11 @@
 #include<net/if.h>
 #include<sys/types.h>
 #include<time.h>
-#defineMAX 300
-#defineETH_P_ALL 0x0003
-#defineETHSIZE 14
-#defineIPHSIZE 20
-#defineTCPHSIZE 20
+#define MAX 300
+#define ETH_P_ALL 0x0003
+#define ETHSIZE 14
+#define IPHSIZE 20
+#define TCPHSIZE 20
 
 typedef unsigned char BYTE;
 
