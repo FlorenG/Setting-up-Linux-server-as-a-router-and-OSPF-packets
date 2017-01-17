@@ -32,7 +32,7 @@ enum_Boolean_ {FALSE=0,TRUE=1};
 int create_socket(char*device)
 {
 	int packet_socket;
-	struct ifreqifr;
+	struct ifreq ifr;
 	memset(&ifr, 0, sizeof(ifr));
 	struct sockaddr_ll rawsll;
 	memset(&rawsll, 0, sizeof(rawsll));
