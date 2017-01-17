@@ -27,7 +27,7 @@
 
 typedef unsigned char BYTE;
 
-enum_Boolean_ {FALSE=0,TRUE=1};
+enum _Boolean_ {FALSE=0,TRUE=1};
 
 int create_socket(char*device)
 {
