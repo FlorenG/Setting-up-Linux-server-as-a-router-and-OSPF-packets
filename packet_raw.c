@@ -137,7 +137,7 @@ BYTE l2[14]={	0x01,\
 		0x00
 };
 
-
+int packet_socket;
 struct packet p;
 memset(&p,0x0,sizeof(struct packet));
 p.ip.version =4;
